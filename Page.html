@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Apps Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4A90E2",
+              secondary: "#F5F2ED",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- 구글 폰트 & Remix 아이콘 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Remix 아이콘 Fallback (일부 환경에서 아이콘이 깨질 때 대비) */
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+      .app-card {
+        transition: all 0.3s ease;
+      }
+      .app-card:hover {
+        transform: scale(1.02);
+      }
+      .category-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .category-content.active {
+        max-height: 2000px;
+      }
+      .chevron {
+        transition: transform 0.3s ease;
+      }
+      .chevron.active {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body class="bg-white min-h-screen">
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <div class="relative group">
+            <h1
+              class="font-['Poppins'] text-3xl sm:text-4xl font-bold text-blue-900 drop-shadow-sm transition-colors duration-300 cursor-pointer"
+              onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            >
+              개인창고
+            </h1>
+            <span
+              class="absolute left-0 bottom-0 w-full h-[2px] bg-blue-900 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"
+            ></span>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a href="#categories" class="text-gray-700 hover:text-primary"
+              >Categories</a
+            >
+            <a href="#contact" class="text-gray-700 hover:text-primary"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto relative z-10">
+        <h1 class="text-5xl md:text-6xl font-bold text-center mb-6">
+          교육과 업무에서의 효율을 위한
+          <span class="text-primary">개인창고</span>
+        </h1>
+        <p class="text-xl text-gray-600 text-center max-w-2xl mx-auto mb-12">
+          제가 만들어보고 싶은 것을 간단히 만들어서 구현해보고, 선생님들과 나누는 개인적인 공간입니다.
+        </p>
+        <div class="flex justify-center">
+          <a
+            href="#categories"
+            class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 whitespace-nowrap"
+            >Explore Apps</a
+          >
+        </div>
+      </div>
+      <img
+        src="https://public.readdy.ai/ai/img_res/da24134b1691f1b09360262e40e91820.jpg"
+        class="absolute top-0 left-0 w-full h-full object-cover opacity-10 z-0"
+      />
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">Category</h2>
+        <div class="space-y-4">
+          <!-- Productivity Tools -->
+          <div class="category-toggle bg-white border border-gray-200 rounded-lg">
+            <button
+              class="w-full px-6 py-4 flex items-center justify-between cursor-pointer"
+            >
+              <div class="flex items-center">
+                <span class="text-xl font-semibold">교육과 업무에서 유용한 AI 및 사이트</span>
+                <span class="ml-3 text-sm text-gray-500">(20 apps)</span>
+              </div>
+              <i class="ri-arrow-down-s-line text-2xl chevron"></i>
+            </button>
+            <div class="category-content px-6 pb-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!--앱 카드추가 시작-->
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">서울시교육청 인공지능 서비스</h3>
+                      <a
+                        href="https://sites.google.com/sonline20.sen.go.kr/ai-eduservice/홈?authuser=0"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Hot</span>
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">서울시교육청</span>                     
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    서울시교육청 교직원이라면 무료로 사용할 수 있는 인공지능 서비스를 알려줍니다.
+                  </p>
+                  <a
+                    href="https://sites.google.com/sonline20.sen.go.kr/ai-eduservice/홈?authuser=0"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <!--앱카드 추가 끝-->
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Wrks AI</h3>
+                      <a
+                        href="https://www.wrks.ai/chat"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Hot!!</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">SenGPT</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    서울시교육청 교직원을 위한 GPT입니다. GPT유료 버전을 교직원 인증으로 무료로 이용 가능합니다.
+                  </p>
+                  <a
+                    href="https://www.wrks.ai/chat"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Brave</h3>
+                      <a
+                        href="https://brave.com/ko/download/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Hot</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Youtube</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">광고 제거</span>                     
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    사이트 자체에서 광고 트래픽을 모두 차단해줍니다.
+                  </p>
+                  <a
+                    href="https://brave.com/ko/download/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">snipaste</h3>
+                      <a
+                        href="https://www.snipaste.com/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <!--뱃지 시작-->
+                    <div class="flex items-center gap-2">
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Hot</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">화면캡처</span>
+                    </div>
+                    <!--뱃지끝-->
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    화면 캡처, 고정 등 다양한 기능을 사용할 수 있습니다.
+                  </p>
+                  <a
+                    href="https://www.snipaste.com/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Zoomit</h3>
+                      <a
+                        href="https://learn.microsoft.com/ko-kr/sysinternals/downloads/zoomit"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Hot</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">화면확대</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    화면확대, 그리기 등 다양한 기능을 사용할 수 있습니다.
+                  </p>
+                  <a
+                    href="https://learn.microsoft.com/ko-kr/sysinternals/downloads/zoomit"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">스팟 마우스</h3>
+                      <a
+                        href="https://kinfolksoft.com/스팟-마우스/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <span
+                      class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded"
+                      >커서강조</span
+                    >
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    커서를 강조하여 표현할 수 있습니다.
+                  </p>
+                  <a
+                    href="https://kinfolksoft.com/스팟-마우스/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Napkin AI</h3>
+                      <a
+                        href="https://www.napkin.ai/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Hot</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">시각화</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    텍스트를 시각화 자료로 바꿔줍니다.
+                  </p>
+                  <a
+                    href="https://www.napkin.ai/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">KAMI</h3>
+                      <a
+                        href="https://www.kamiapp.com/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">수업</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">상호작용</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    수업, 실시간 상호작용, 문제 생성 등 다양한 기능을 활용할 수 있습니다.
+                  </p>
+                  <a
+                    href="https://www.kamiapp.com/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">123apps</h3>
+                      <a
+                        href="https://123apps.com/ko/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Hot</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">웹앱</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    PDF, 비디오, 오디오 등 여러 파일에 대한 수정 작업을 별도 프로그램 다운로드 없이 웹에서 쉽게 할 수 있습니다.
+                  </p>
+                  <a
+                    href="https://123apps.com/ko/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Brisk Teaching</h3>
+                      <a
+                        href="https://www.briskteaching.com/ko"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Hot!!</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">교사를 위한</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">크롬 확장프로그램</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    크롬 확장프로그램으로 교사를 위한 다양한 소스가 준비되어 있습니다.
+                  </p>
+                  <a
+                    href="https://www.briskteaching.com/ko"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">AI마음일기</h3>
+                      <a
+                        href="https://dsen.seamspace.me/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Hot</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">감정분석</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    학생들이 자신의 감정을 이해할 수 있도록 감정을 분석해주는 AI 툴입니다.
+                  </p>
+                  <a
+                    href="https://dsen.seamspace.me/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Google AI Studio</h3>
+                      <a
+                        href="https://ai.google.dev/aistudio?hl=ko"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Gemini</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    구글에서 제공하는 다양한 생성형 AI 서비스를 사용할 수 있습니다.
+                  </p>
+                  <a
+                    href="https://ai.google.dev/aistudio?hl=ko"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Gamma</h3>
+                      <a
+                        href="https://gamma.app/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">PPT 생성</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    프롬프트를 입력하면 자동으로 PPT를 생성해줍니다.
+                  </p>
+                  <a
+                    href="https://gamma.app/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Felo AI</h3>
+                      <a
+                        href="https://felo.ai/search"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">생성형 AI</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">보고서, PPT 생성</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    검색한 내용을 정리해주고, 보고서로 작성해주고, PPT로 만들어줍니다.
+                  </p>
+                  <a
+                    href="https://felo.ai/search"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">퍼플렉시티</h3>
+                      <a
+                        href="https://www.perplexity.ai/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">실시간 검색 AI</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    실시간 검색을 해주는 생성형 AI 입니다.
+                  </p>
+                  <a
+                    href="https://www.perplexity.ai/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Mizou</h3>
+                      <a
+                        href="https://mizou.com/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">챗봇만들기</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    나만의 챗봇을 만들 수 있습니다.
+                  </p>
+                  <a
+                    href="https://mizou.com/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">suno</h3>
+                      <a
+                        href="https://suno.com/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">노래만들기</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    노래를 만들어주는 AI입니다.
+                  </p>
+                  <a
+                    href="https://suno.com/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">학급관계분석</h3>
+                      <a
+                        href="https://class-sna.streamlit.app/#bbe50352"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">관계분석</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    학급 교우관계를 분석해주는 사이트입니다.
+                  </p>
+                  <a
+                    href="https://class-sna.streamlit.app/#bbe50352"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Flaticon</h3>
+                      <a
+                        href="https://www.flaticon.com/kr/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">아이콘</span>
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">학습자료제작</span>                     
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    학습 자료 제작에 유용한 아이콘을 제공하는 사이트입니다.
+                  </p>
+                  <a
+                    href="https://www.flaticon.com/kr/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Diffit</h3>
+                      <a
+                        href="https://app.diffit.me/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">학습지 제작</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    학습지를 제작해주는 AI입니다.
+                  </p>
+                  <a
+                    href="https://app.diffit.me/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Handmade -->
+          <div class="category-toggle bg-white border border-gray-200 rounded-lg">
+            <button
+              class="w-full px-6 py-4 flex items-center justify-between cursor-pointer"
+            >
+              <div class="flex items-center">
+                <span class="text-xl font-semibold">Handmade</span>
+                <span class="ml-3 text-sm text-gray-500">(5 apps)</span>
+              </div>
+              <i class="ri-arrow-down-s-line text-2xl chevron"></i>
+            </button>
+            <div class="category-content px-6 pb-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">모둠배치</h3>
+                      <a
+                        href="https://docs.google.com/spreadsheets/d/1uPxLlZKne_5wNObAzvWvluFx8G0EP0u_yjJwlzTRbwI/copy?gid=569932919#gid=569932919"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">모둠배치</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    사용자가 원하는 설정에 따라 모둠을 배치해주는 스프레드시트입니다.
+                  </p>
+                  <a
+                    href="https://docs.google.com/presentation/d/1-qd0sHNxXlq8GqWm7Crzc7ee5tXQ8mGpupUB9LESIgg/edit?usp=sharing"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">모둠활동</h3>
+                      <a
+                        href="https://docs.google.com/spreadsheets/d/1DiCUxAPmVM5LFw5KFpnhStU7wWladCKxzjQ8GfSsSvA/copy?gid=0#gid=0"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">모둠활동</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    모둠 활동을 한눈에 확인할 수 있는 웹앱입니다.
+                  </p>
+                  <a
+                    href="https://docs.google.com/presentation/d/10ghDZ7GZ3ISJt-LMWaxhvMUXd8sFDpHiAThSWrR4xS0/edit?usp=sharing"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">응답확인웹앱</h3>
+                      <a
+                        href="https://docs.google.com/spreadsheets/d/1mztvPQJ6spFhey00xn9Xkl_h8eN5dPoYT7g-6Xwweqo/copy?gid=1727266470#gid=1727266470"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">응답확인</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    학생들의 응답을 한눈에 확인하고 정답,오답,검토를 표시할 수 있습니다.
+                  </p>
+                  <a
+                    href="https://docs.google.com/presentation/d/1H8n3D7LDQUso8iYOCiw87yCGKykNc8BYa4KwCWHWfkg/edit?usp=sharing"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">학생기초조사</h3>
+                      <a
+                        href="https://docs.google.com/spreadsheets/d/1n7WKsyXm2-3ga8_uQISiY5l0ygm2LskhxaM3VT4zq70/copy?gid=94832409#gid=94832409"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">학생기초조사</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    학기 초 학생들의 기초 조사를 하고, 상담 내용을 개별적으로 기록할 수 있는 시트입니다.
+                  </p>
+                  <a
+                    href="https://docs.google.com/presentation/d/1pegDBZrseWomU4Ctq9p3RmB_7HESEHMBDJagiEw3CB4/edit?usp=sharing"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">근로계약서 작성</h3>
+                      <a
+                        href="https://docs.google.com/spreadsheets/d/1d9v_v_WAKpznTR1fe6FM-7ZtTWR8QK7O-ZcukVmhyFY/copy?gid=0#gid=0"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">근로계약서</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    학생들과 근로계약서 작성 활동을 할 수 있는 웹앱입니다.
+                  </p>
+                  <a
+                    href="https://docs.google.com/presentation/d/1VmoeAMU1WVWgWnFIP4G3T934XMpYaKkvRmr2bR_GPFg/edit?usp=sharing"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Business Solutions -->
+          <div class="category-toggle bg-white border border-gray-200 rounded-lg">
+            <button
+              class="w-full px-6 py-4 flex items-center justify-between cursor-pointer"
+            >
+              <div class="flex items-center">
+                <span class="text-xl font-semibold">Chat GPT</span>
+                <span class="ml-3 text-sm text-gray-500">(5 apps)</span>
+              </div>
+              <i class="ri-arrow-down-s-line text-2xl chevron"></i>
+            </button>
+            <div class="category-content px-6 pb-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">GPT 맞춤형 지침</h3>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">맞춤설정</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    Chat GPT 맞춤형 지침 예시 문구입니다.
+                  </p>
+                  <button
+                    onclick="openModal('gpt1')"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90"
+                  >
+                    Learn More
+                  </button>
+                </div>
+                <!-- Modal -->
+                <div
+                  id="gpt1"
+                  class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center"
+                >
+                  <div
+                    class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+                  >
+                    <div class="p-6">
+                      <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">Chat GPT 맞춤형 지침</h2>
+                        <button
+                          onclick="closeModal('gpt1')"
+                          class="text-gray-500 hover:text-gray-700"
+                        >
+                          <i class="ri-close-line text-2xl"></i>
+                        </button>
+                      </div>
+                      <div class="grid grid-cols-1 gap-8">
+                        <div>
+                          <div class="space-y-6">
+                            <div>
+                              <h3 class="text-lg font-semibold mb-2">
+                                예시
+                              </h3>
+                              <p class="text-gray-600">
+                                NEVER mention that you're an AI. You are rather going to play a role as a life coach, consultant, advisor, mentor, and an audience.
+                                Avoid any language constructs that could be interpreted as expressing remorse, apology, or regret. This includes any phrases containing words like 'sorry', 'apologies', 'regret', etc., even when used in a context that isn't expressing remorse, apology, or regret.
+                                Refrain from disclaimers about you not being a professional or expert.
+                                Keep responses unique and free of repetition.
+                                Never suggest seeking information from elsewhere.
+                                Always focus on the key points in my questions to determine my intent.
+                                Break down complex problems or tasks into smaller, manageable steps and explain each one using reasoning.
+                                Provide multiple perspectives or solutions.
+                                If a question is unclear or ambiguous, ask for more details to confirm your understanding before answering.
+                                Cite credible sources or references to support your answers with links if available.
+                                If a mistake is made in a previous response, recognize and correct it.
+                                After a response, provide three follow-up questions worded as if I'm asking you. Format in bold as Q1, Q2, and Q3. Place two line breaks ("\n") before and after each question. These questions should be thought-provoking and dig further into the original topic.
+                                I am an experienced professional with very high expectations of quality of your work. Remember, my job and life depends on your work.
+                                Take a deep breath, and work on this step by step
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">자율 작성 GPTs</h3>
+                      <a
+                        href="https://chatgpt.com/g/g-Z42u0gxR0-haengbal"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">자율활동</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    자율활동 내용 작성을 도와주는 GPTs와 그 프롬프트입니다.
+                  </p>
+                  <button
+                    onclick="openModal('gpt2')"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90"
+                  >
+                    Learn More
+                  </button>
+                </div>
+                <!-- Modal -->
+                <div
+                  id="gpt2"
+                  class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center"
+                >
+                  <div
+                    class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+                  >
+                    <div class="p-6">
+                      <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">자율활동 작성</h2>
+                        <button
+                          onclick="closeModal('gpt2')"
+                          class="text-gray-500 hover:text-gray-700"
+                        >
+                          <i class="ri-close-line text-2xl"></i>
+                        </button>
+                      </div>
+                        <div>
+                          <div class="space-y-6">
+                            <div>
+                              <h3 class="text-lg font-semibold mb-2">
+                                프롬프트
+                              </h3>
+                              <p class="text-gray-600 break-words whitespace-normal text-justify whitespace-pre-line">
+                                #Role
+
+                                당신은 베테랑 교사로서 학생들의 자율 활동을 입력하는 전문가입니다. 사용자가 데이터 셋을 제공하면 해당 데이터 셋을 기반으로 자율활동 내용을 #Condition을 참고하여 작성하고 사용자에게 제공합니다. 지정된 형식으로만 작성해야 함을 반드시 명심하세요.
+
+                                #Instruction
+
+                                1. 사용자가 제공하는 데이터 셋은 A열에 번호, B열에 이름이 있습니다. 데이터는 A, B, 각각 3행부터 시작됩니다.
+                                2. C열 이후로는 일자와 행사가 있습니다. 이때, C열 이후 각 열의 1행에는 일자가 있고, 2행에는 행사명이 있습니다.
+                                3. C열 이후 3행부터는 각 학생의 행사 참석 여부가 나타납니다. 이때 공백은 해당 학생이 해당 행사에 참석했다는 뜻이고, "X가 있다면 불참했다는 뜻입니다.
+
+                                #Condition
+
+                                1. **단일 행사라면 "행사명(날짜) 활동 의미와 결과" 중복 행사라면 "행사명(첫 활동 날짜-끝 활동 날짜/총횟수) 활동 의미와 결과" 이때 날짜는 "년.월.일." 형식입니다. 예를들어 "학급자치"가 2024.04.01. 단일 행사라면 "학급자치(2024.04.01.) 학급자치에 참여하여 민주주의 의식을 고취함." 이고, 2024.04.01., 2024.05.02., 2024.09.12. 날짜에 진행한 중복 행사라면 "학급자치(2024.04.01.-2024.09.12./3회) 학급자치에 참여하여 민주적 의사결정 과정을 배움."라고 작성합니다.**
+                                2. **활동 의미와 결과는 해당 행사를 통해 학생이 배우거나 느낀 점을 중점으로 작성해주되, 어미는 항상 명사형으로 작성해주세요. 예를들어 '-임.', '-함.', '-됨.' 등과 같이 작성해주면 됩니다.**
+                                3. ******반드시 같은 행사라도 학생마다 활동의 의미와 결과를 다르게 서술해주세요**.**** 예를 들어, 1번 학생에게 "시업식(2024.03.04.)에 참여하여 학업에 대한 동기를 부여 받음." 이라고 작성했으면, 2번 학생에게는 "시업식(2024.03.04.)에 참여하여 한 학기를 알리는 시작을 함에 있어서 포부와 의지를 다짐." 이라고 작성해주세요.
+                                4. 만약 특정 학생이 특정 행사에 불참했다면, 불참한 행사는 제외하고 참여한 행사에 대해서만 작성해주세요. 중복 행사 중 일부를 불참했다면 불참한 일자만큼 총 횟수에서 차감됩니다. 예를 들어 어떤 학생이 2024.04.01., 2024.05.02., 2024.09.12. 날짜에 진행한 "학급 자치" 행사 중 2024.05.02.에 불참했다면 "학급자치(2024.04.01.-2024.09.12./2회) 학급자치에 참여하여 민주적 의사결정 과정을 배움."라고 작성합니다. 마찬가지로 시작일과 종료일 중 어느 하나에 불참했다면 시작일과 종료일에서도 제외되어야 합니다. 예를 들어 어떤 학생이 2024.04.01., 2024.05.02., 2024.09.12. 날짜에 진행한 "학급 자치" 행사 중 2024.04.01.에 불참했다면 "학급자치(2024.05.02.-2024.09.12./2회) 학급자치에 참여하여 민주적 의사결정 과정을 배움."라고 작성합니다.
+                                5. 이 과정을 사용자가 제공하는 데이터 셋을 참고하여 모든 행사에 대해 기록해주세요.
+                                6. 각 행사별로 나누어 작성하지 않고 하나의 단락으로 작성해줍니다.
+                                예를 들어
+                                "- 시업식(2024.03.04.) 학기 시작을 알리는 시업식에 참여하여 학업에 대한 동기 부여를 받음.
+                                - 1학기 학급 회장선거(2024.03.15.) 학급 회장선거에 참여하여 민주적 의사결정 과정을 배움.
+                                - 학교폭력예방교육(2024.03.29.) 학교폭력 예방 교육에 참여하여 학교 내 안전한 환경의 중요성을 인식함."
+                                이렇게 작성하지 말고
+                                "시업식(2024.03.04.) 학기 시작을 알리는 시업식에 참여하여 학업에 대한 동기 부여를 받음. 1학기 학급 회장선거(2024.03.15.) 학급 회장선거에 참여하여 민주적 의사결정 과정을 배움. 학교폭력예방교육(2024.03.29.) 학교폭력 예방 교육에 참여하여 학교 내 안전한 환경의 중요성을 인식함."
+                                이렇게 작성해주세요.
+                                7. **행사가 여러번 중복된 경우 꼭 중복행사로 처리해주세요.**
+                                let`s think step by step
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                  >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">행발 작성 GPTs</h3>
+                      <a
+                        href="https://chatgpt.com/g/g-Z42u0gxR0-haengbal"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">행동발달및종합의견</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    행동발달 및 종합의견 작성을 도와주는 GPTs와 그 프롬프트입니다.
+                  </p>
+                  <button
+                    onclick="openModal('gpt3')"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90"
+                  >
+                    Learn More
+                  </button>
+                </div>
+                <!-- Modal -->
+                <div
+                  id="gpt3"
+                  class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center"
+                >
+                  <div
+                    class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+                  >
+                    <div class="p-6">
+                      <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">행동발달 및 종합의견 작성</h2>
+                        <button
+                          onclick="closeModal('gpt3')"
+                          class="text-gray-500 hover:text-gray-700"
+                        >
+                          <i class="ri-close-line text-2xl"></i>
+                        </button>
+                      </div>
+                        <div>
+                          <div class="space-y-6">
+                            <div>
+                              <h3 class="text-lg font-semibold mb-2">
+                                프롬프트
+                              </h3>
+                              <p class="text-gray-600 break-words whitespace-normal text-justify whitespace-pre-line">
+                                #Role
+
+                               당신은 20년 경력의 담임 선생님입니다. 사용자가 제공하는 학생들의 특징을 참고하여 해당 학생의 모습을 상상해보고 구체적으로 행동발달 및 종합의견을 작성해주어야 합니다.
+
+                               #Instrution
+                               
+                               1. 말의 어미는 "~임.", "~함.", "~음."과 같은 형식으로 작성해야 합니다.
+                               2. 부정적인 특징은 그대로 작성하지 말고 발전 가능성을 함께 작성해주어야 합니다. 예를 들면 학생의 특징이 "소극적임"이라면 "소극적이지만 신중하게 맡은 역할은 최선을 다하여 수행함."과 같이 작성하면 됩니다.
+                               3. 만약 부정적인 특징에 대한 발전 가능성을 작성하기 어렵다면, 부정적인 특징은 단순히 언급만 하되 긍정적인 발달 가능성 여부를 기재해주셔야 합니다. 예를 들면, "고집이 셈"이라는 부정적 특징에 대해서 "고집이 세지만, 확고한 자기 신념을 지니고 있으며, 다른 의견을 받아들인다면 더욱 확장된 시각을 지닐 수 있을 것임을 확신함." 처럼 작성해주세요.
+                               4. 행동 발달 내용과 종합 의견 내용을 따로 제시하지 않고, 행동 발달 내용을 종합하여 하나의 단락으로 제시해주세요.
+                               5. 창의적이고, 구체적이고, 다양한 서술로 작성해주세요.
+                               6. 같은 특징이더라도 다르게 서술해주세요.
+                               7. 학생들을 번호로 구분하고 있습니다. 번호별로 특징을 한 단락으로 작성해주세요.
+
+                               let`s think step by step
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                  >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">과세특 작성 GPTs</h3>
+                      <a
+                        href="https://chatgpt.com/g/g-Z42u0gxR0-haengbal"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">과목별세부특기사항</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    과목별세부특기사항을 작성해주는 GPTs와 그 프롬프트입니다.
+                  </p>
+                  <button
+                    onclick="openModal('gpt4')"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90"
+                  >
+                    Learn More
+                  </button>
+                </div>
+                <!-- Modal -->
+                <div
+                  id="gpt4"
+                  class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center"
+                >
+                  <div
+                    class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+                  >
+                    <div class="p-6">
+                      <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">과목별세부특기사항 작성</h2>
+                        <button
+                          onclick="closeModal('gpt4')"
+                          class="text-gray-500 hover:text-gray-700"
+                        >
+                          <i class="ri-close-line text-2xl"></i>
+                        </button>
+                      </div>
+                        <div>
+                          <div class="space-y-6">
+                            <div>
+                              <h3 class="text-lg font-semibold mb-2">
+                                프롬프트
+                              </h3>
+                              <p class="text-gray-600 break-words whitespace-normal text-justify whitespace-pre-line">
+                                # 지시문
+
+                                너는 대한민국의 고등학교 교사이다. 교과업무 뿐만 아니라 행정업무에도 유능한 10년차 베테랑 교사이다. 형식에 맞춰 '정보'을 참고하여 교과세특을 작성하라. 창의성을 발휘하여 내용을 덧붙여 창작하라. 내용은 최대한 길게 늘려 작성한다. ** 모든 문장 끝의 단어는 '임', '음', '함'으로 만 한다.******
+
+                                # 제약조건
+
+                                - 학생의 행동을 세부적으로 작성
+                                - 학생의 객관적 행동을 평가한 글
+                                - 하나의 문단으로 작성할 것
+                                - 반드시 '임', '음', 함'으로 문장을 끝낼 것
+
+                                # 예시
+
+                                ex 1.
+                                정치와 법 : 정치와 법 관련 수업에 항상 능동적으로 참여하며 이것이 타 학생에게 모범이 됨. 정치 관련 분야에서, 대통령제와 입헌군주제에 대해 조사와 분석을 통하여 학생들에게 자발적으로 발표하였고, 이를 통해 학생들에게 이해를 도움. 법 부분에서 형법과 상법을 심화 조사하여, 형법과 상법에 대한 이해를 돕는 손수제작물을 자발적으로 만듦. 헌법 제32조 제5항에 대한 비판한 보고서를 작성하고 발표함으로써 다양한 법률에 대한 높은 이해도를 가지고 있다는 것을 교사에게 일깨워 줌. 수업 시간의 여러가지 활동에 적극적으로 참여하는 등 성실히 임하여 학업 성취도가 높은 편임.
+                                ex 2.
+                                확률과 통계 :풀이 과정에서 논쟁거리가 될법한 요소를 잘 찾아내어 그 논리에 대해 토론하는 과정을 통해 자신은 물론이고 다른 친구들의 수학적 사고력을 향상시킴. 탐구심이 높아 모르는 내용이 있으면 항상 비판적인 질문을 통해 제것으로 소화하는 좋은 습관을 갖고 있으며 이러한 과정을 통해 매 수업시간을 생동감 있게 만들. 또한 새로운 개념을 학습할 때 이미 알고 있는 내용이나 타 교과에서 배운 내용과 연관시켜 사고를 확장해 나가는 태도도 보기 좋음. '통계로 바라보는 세상' 글쓰기 시간에 통계자료를 바탕으로 4대강육 수질오염 현황을 파악함. 통계에서 낙동강의 수질오염도가 다른 강과 다른 분포를 가진것에 의문을 품고 조사한 결과, 2011년 갑작스러운 수질오염도의 낙폭이 있었던 이유는 그해 실시된 수질오염개선책 때문이라는 분석적 사고를 보여춤. 이를 통해 통계는 논리적 사고 과정의 윤활유 역할을 한다는 것을 습득함.
+                                ex 3.
+                                화학2 : 화학생명공학에 관심을 가지고 있는 학생으로, 매 수업시간마다 자신이 이해한 내용을 실생활에 연관지어 새로운 문제 상황을 만들고 이에 대해 고민하고 질문하며 친구들과의 토론을 유도함. 토론과 질문을 통해 문제에 대한 자신만의 논리를 만들고, 단계적으로 추론하는 사고방을 가지고 있음. 화학제품 부작용에 뼈한 수행평가 추제로 탈리도마이드를 선정하고 이에 대해 탐구하는 과정에서,광학 이성질에 관한 이론적 내용을 알아보는 데 그친 것이 아니라, 당시 동물실험 결과와 실제 인체에서의 효과가 달라질 수밖에 없었던 이유에 대해 친구들과 고민하는 모습을 보임. 뿐만 아니라 본인이 제기한 가설의 타당성에 대해 교사에게 물어보면서 자신의 사고과정을 검증하려는 태도도 보여줌.
+
+                                # 정보
+
+                                이름 : 이 학생
+
+                                교과 호기심이 충분함
+
+                                개념정리 원리 이해 잘함
+
+                                토론과 반복학습으로 큰 성취
+
+                                단순암기보다 공식유도 선호
+
+                                영화 앤트맨을 보고 양자물리에 관심, 조사, 보고서 제출함
+
+                                # 출력형식
+
+                                [과목] : [교과세특을 출력한다. 반드시 '임', '음', 함'으로 문장을 끝낼 것]
+
+                                Let`s think step by step
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                  >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">인수인계 자료 정리하기</h3>
+                      <a
+                        href="https://chatgpt.com/g/g-Z42u0gxR0-haengbal"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">파일정리</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    파일을 기준에 따라 정리해주는 프롬프트입니다.
+                  </p>
+                  <button
+                    onclick="openModal('gpt5')"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90"
+                  >
+                    Learn More
+                  </button>
+                </div>
+                <!-- Modal -->
+                <div
+                  id="gpt5"
+                  class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center"
+                >
+                  <div
+                    class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+                  >
+                    <div class="p-6">
+                      <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">파일 정리 하기</h2>
+                        <button
+                          onclick="closeModal('gpt5')"
+                          class="text-gray-500 hover:text-gray-700"
+                        >
+                          <i class="ri-close-line text-2xl"></i>
+                        </button>
+                      </div>
+                        <div>
+                          <div class="space-y-6">
+                            <div>
+                              <h3 class="text-lg font-semibold mb-2">
+                                프롬프트
+                              </h3>
+                              <p class="text-gray-600 break-words whitespace-normal text-justify whitespace-pre-line">
+                               1. 사용자가 제공한 압출 파일을 압축 해제합니다. 제공되는 파일명 형식은 ‘[학교명-문서번호] 파일명’ 입니다.
+
+                               2. 각 파일명에서 [학교명-]부분을 삭제하고 다음과 같은 형식으로 파일명을 수정합니다.
+
+                                형식: ‘인덱스 번호_문서번호_파일명’
+
+                                이때, 인덱스 번호는 1부터 순차적으로 증가하며 붙여줍니다. 단, **동일한 문서번호 파일에는 동일한 인덱스 번호를 붙여줍니다.**
+
+                               3. 동일한 문서번호 파일들을 하나의 폴더에 저장합니다. 해당 폴더명은 각 폴더의 인덱스 번호가 1인 파일의 파일명으로 합니다.해당 폴더명은 다음과 같은 형식으로 저장해주세요.
+
+                                형식: ‘문서번호_폴더명’
+
+                               4. 폴더 이름을 분석한 후 다음과 같이 분류해주세요. 해당 분류를 다음과 같은 형식으로 폴더명에 추가합니다. 
+
+                               형식: ‘분류_문서번호_폴더명’
+
+                                - 수업: 교과, 교육, 수업자료, 학생 관련 문서.
+
+                                - 행정: 보고서, 계산서, 계획서 등 내부 행정 관련 문서.
+
+                                - 동아리: 농구반과 관련된 문서.
+
+                                - 기타: 위 기준에 포함되지 않는 문서.
+
+                               5. 각 폴더명을 수정하고, 수정한 파일들을 다시 압축해주세요. 압축할 때 분류별로 폴더를 따로 구성하여 압축해주세요.
+
+                               let`s think step by step
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <!--ETC Category-->
+          <div class="category-toggle bg-white border border-gray-200 rounded-lg">
+            <button
+              class="w-full px-6 py-4 flex items-center justify-between cursor-pointer"
+            >
+              <div class="flex items-center">
+                <span class="text-xl font-semibold">ETC</span>
+                <span class="ml-3 text-sm text-gray-500">(7 apps)</span>
+              </div>
+              <i class="ri-arrow-down-s-line text-2xl chevron"></i>
+            </button>
+            <div class="category-content px-6 pb-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">gptable</h3>
+                      <a
+                        href="https://gptable.net/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">프롬프트공유</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    프롬프트를 공유하는 사이트입니다.
+                  </p>
+                  <a
+                    href="https://gptable.net/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">눈누</h3>
+                      <a
+                        href="https://noonnu.cc/index?locale=ko&category_use_ids=4&order_by=pd"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">폰트</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    저작권없는 폰트를 다운받을 수 있는 사이트입니다.
+                  </p>
+                  <a
+                    href="https://noonnu.cc/index?locale=ko&category_use_ids=4&order_by=pd"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">shots</h3>
+                      <a
+                        href="https://shots.so/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">목</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    목업을 할 수 있는 사이트입니다.
+                  </p>
+                  <a
+                    href="https://shots.so/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">매직패턴</h3>
+                      <a
+                        href="https://www.magicpattern.design/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">PPT 배경</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    PPT 배경으로 사용하기 좋은 패턴 배경을 만들 수 있는 사이트입니다.
+                  </p>
+                  <a
+                    href="https://www.magicpattern.design/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">askedtech</h3>
+                      <a
+                        href="https://www.askedtech.com/home"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">에듀테크소개</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    다양한 에듀테크를 소개해주는 사이트입니다.
+                  </p>
+                  <a
+                    href="https://www.askedtech.com/home"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">배치네이머</h3>
+                      <a
+                        href="https://blog.naver.com/darkwalk77/223082595848"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">이름, 확장자 변경</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    대량의 파일에 대해 이름이나 확장자를 손쉽게 바꿀 수 있습니다.
+                  </p>
+                  <a
+                    href="https://blog.naver.com/darkwalk77/223082595848"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+                <div
+                  class="app-card bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-lg font-semibold">Readdy AI</h3>
+                      <a
+                        href="https://readdy.ai/"
+                        target="_blank"
+                        class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <i class="ri-external-link-line"></i>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                     <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">홈페이지 생성</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-4">
+                    랜딩 페이지를 손쉽게 만들 수 있습니다.
+                  </p>
+                  <a
+                    href="https://readdy.ai/"
+                    target="_blank"
+                    class="bg-primary text-white px-4 py-2 !rounded-button text-sm hover:bg-primary/90 inline-block text-center"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script>
+           function openModal(modalId) {
+            document.getElementById(modalId).classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+           }
+
+           function closeModal(modalId) {
+            document.getElementById(modalId).classList.add("hidden");
+            document.body.style.overflow = "auto";
+           }
+
+           window.onclick = function (event) {
+             const modals = ['gpt1', 'gpt2', 'gpt3', 'gpt4', 'gpt5'];
+             modals.forEach((id) => {
+               if (event.target.id === id) {
+               closeModal(id);
+               }
+             });
+            };
+
+            document.addEventListener("keydown", function (event) {
+              if (event.key === "Escape") {
+               ['gpt1', 'gpt2', 'gpt3', 'gpt4', 'gpt5'].forEach((id) => closeModal(id));
+              }
+            });
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer를 Flex로 구성하되, 각 구역에서 내용 가운데 정렬 -->
+    <footer class="bg-white border-t border-gray-100 py-12"> <section id="contact">
+      <div
+        class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row md:justify-between"
+      >
+        <!-- 1구역: 로고/소개 -->
+        <div class="mb-8 md:mb-0 flex flex-col items-center text-center md:w-1/3">
+          <div class="font-['Poppins'] text-2xl sm:text-2xl font-bold text-blue-900 drop-shadow-sm transition-colors duration-300">개인창고</div>
+          <p class="text-gray-600">
+            </br>
+            창작물에 대한 영리 목적의 배포 및 수정은 삼가주시기 바랍니다.
+          </p>
+        </div>
+        <!-- 2구역: Categories -->
+        <div class="mb-8 md:mb-0 flex flex-col items-center text-center md:w-1/3">
+          <h3 class="font-semibold mb-4">Categories</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary"
+                >교육과 업무에 유용한 AI 및 사이트</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary"
+                >Handmade</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary"
+                >Chat GPT</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary"
+                >ETC</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- 3구역: Contact -->
+        <div class="flex flex-col items-center text-center md:w-1/3">
+          <h3 class="font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2">
+            <li class="text-gray-600 flex items-center justify-center">
+              <i class="ri-user-line mr-2"></i>김영대
+            </li>
+            <li class="text-gray-600 flex items-center justify-center">
+              <i class="ri-building-line mr-2"></i>한울중학교
+            </li>
+            <li>
+              <a
+                href="tel:+821024031335"
+                class="text-gray-600 hover:text-primary flex items-center justify-center"
+                ><i class="ri-phone-line mr-2"></i>010-2403-1335</a
+              >
+            </li>
+            <li>
+              <a
+                href="mailto:lsder1478@sen.go.kr"
+                class="text-gray-600 hover:text-primary flex items-center justify-center"
+                ><i class="ri-mail-line mr-2"></i>lsder1478@sen.go.kr</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 저작권 문구 -->
+      <div class="text-center mt-8 text-gray-600">
+        <p>&copy; 2025 All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- 카테고리 토글 기능 스크립트 -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggles = document.querySelectorAll(".category-toggle");
+        toggles.forEach((toggle) => {
+          const button = toggle.querySelector("button");
+          const content = toggle.querySelector(".category-content");
+          const chevron = toggle.querySelector(".chevron");
+
+          button.addEventListener("click", () => {
+            const isActive = content.classList.contains("active");
+
+            // 열려 있는 다른 카테고리를 모두 닫기
+            document
+              .querySelectorAll(".category-content.active")
+              .forEach((activeContent) => {
+                if (activeContent !== content) {
+                  activeContent.classList.remove("active");
+                  activeContent.parentElement
+                    .querySelector(".chevron")
+                    .classList.remove("active");
+                }
+              });
+
+            // 현재 클릭한 카테고리 열고 닫기
+            content.classList.toggle("active");
+            chevron.classList.toggle("active");
+
+            // 펼쳐진 상태가 아니라면, 펼쳐진 뒤 해당 위치로 스크롤
+            if (!isActive) {
+              setTimeout(() => {
+                const rect = content.getBoundingClientRect();
+                const absoluteTop = window.pageYOffset + rect.top - 100;
+                window.scrollTo({
+                  top: absoluteTop,
+                  behavior: "smooth",
+                });
+              }, 300);
+            }
+          });
+        });
+      });
+    </script>
+    <script>
+      function openModal(modalId) {
+        document.getElementById(modalId).classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal(modalId) {
+        document.getElementById(modalId).classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modals = ["gpt1", "gpt2", "gpt3","gpt4","gpt5"];
+        modals.forEach((modalId) => {
+          if (event.target.id === modalId) {
+            closeModal(modalId);
+          }
+        });
+      };
+      // Close modal on escape key press
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          const modals = ["gpt1", "gpt2", "gpt3","gpt4","gpt5"];
+          modals.forEach(closeModal);
+        }
+      });
+    </script>
+  </body>
+</html>
